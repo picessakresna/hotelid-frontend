@@ -1,1 +1,0 @@
-# hotelid-frontend
