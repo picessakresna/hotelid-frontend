@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/stylebookings.css">
+  <link rel="stylesheet" href="test.css">
 
 </head>
 
@@ -108,8 +108,31 @@
   </header>
 
   <main>
-    <article>
-
+    <article class="article-tab">
+        <div class="container-tab">
+            <input type="radio" name="slider" id="pending" checked>
+            <input type="radio" name="slider" id="processed">
+            <input type="radio" name="slider" id="checkout">
+            <nav>
+                <label for="pending" class="pending">Pending</label>
+                <label for="processed" class="processed">Processed</label>
+                <label for="checkout" class="checkout">Check Out</label>
+                <div class="slider"></div>
+            </nav>
+            <section class="section-tab">
+                <div class="content content-1">
+                    
+                </div>
+                <div class="content content-2">
+                    <div class="title-content">Processed</div>
+                    <p>This is home</p>
+                </div>
+                <div class="content content-3">
+                    <div class="title-content">Check Out</div>
+                    <p>This is home</p>
+                </div>
+            </section>
+        </div>
     </article>
   </main>
 
@@ -189,3 +212,4 @@
 </body>
 
 </html>
+
