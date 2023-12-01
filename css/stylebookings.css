@@ -134,8 +134,6 @@ button {
   font: inherit;
 }
 
-input { width: 100%; }
-
 button { cursor: pointer; }
 
 ion-icon { pointer-events: none; }
@@ -562,6 +560,189 @@ nav ul li a{
 
 .promo-banner img{
   border-radius: 20px;
+}
+
+.article-tab{
+  display: flex;
+  justify-content: center;
+}
+
+.container-tab{
+  margin-top: 6.5em;
+  max-width: 83em;
+  width: 100%;
+  padding: 30px 10px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container-tab nav{
+  position: relative;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-tab nav::after{
+  content: "";
+  background: silver;
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  top: 3.1em;
+  filter: blur(0.5px);
+}
+
+.container-tab nav label{
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+#processed:checked ~ nav label .pending,
+#processed:checked ~ nav label .processed,
+#processed:checked ~ nav label .checkout{
+  color: hsla(10, 68%, 59%, 1);
+}
+
+input[type='radio']{
+  display: none;
+}
+
+.container-tab nav .slider{
+  position: absolute;
+  height: 4.5px;
+  background-color: hsla(10, 68%, 59%, 1);
+  border-radius: 20px;
+  width: 33.3%;
+  z-index: 1; 
+  left: 0;
+  bottom: 0;
+  transition: all 0.3s ease;
+  filter: blur(0.4px);
+}
+
+#pending:checked ~ nav .slider{
+  left: 0%;
+}
+
+#processed:checked ~ nav .slider{
+  left: 33.3%;
+}
+
+#checkout:checked ~ nav .slider{
+  left: 66.6%;
+}
+
+#pending:checked ~ nav .pending{
+  color: hsla(10, 68%, 59%, 1);
+}
+
+#processed:checked ~ nav .processed{
+  color: hsla(10, 68%, 59%, 1);
+}
+
+#checkout:checked ~ nav .checkout{
+  color: hsla(10, 68%, 59%, 1);
+}
+
+.section-tab{
+  filter: blur(0.3px);
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-tab .content{
+  display: none;
+  margin-bottom: 20px;
+}
+
+#pending:checked ~ .section-tab .content-1{
+  display: block;
+}
+
+#processed:checked ~ .section-tab .content-2{
+  display: block;
+}
+
+#checkout:checked ~ .section-tab .content-3{
+  display: block;
+}
+
+
+.courses-container {
+}
+
+.rooms-card {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: var(--shadow-2);
+	display: flex;
+	max-width: 100%;
+	margin: 20px;
+	overflow: hidden;
+	width: 82em;
+}
+
+.rooms-card h6 {
+	opacity: 0.6;
+	margin: 0;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.rooms-card h2 {
+	letter-spacing: 1px;
+	margin: 10px 0;
+}
+
+.rooms-preview {
+	background-color: #2A265F;
+	color: #fff;
+	max-width: 250px;
+}
+
+.rooms-preview a {
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	opacity: 0.6;
+	margin-top: 30px;
+	text-decoration: none;
+}
+
+.rooms-info {
+	padding: 30px;
+	position: relative;
+	width: 100%;
+}
+
+.btn {
+	background-color: var(--violet-blue-crayola);
+	border: 0;
+	border-radius: 50px;
+	box-shadow: var(--shadow-2);
+	color: #fff;
+	font-size: 16px;
+	padding: 6px 25px;
+	position: absolute;
+	bottom: 30px;
+	right: 30px;
+	letter-spacing: 1px;
 }
 
 /*-----------------------------------*\
