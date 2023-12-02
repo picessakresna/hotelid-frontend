@@ -613,7 +613,8 @@ nav ul li a{
 
 #processed:checked ~ nav label .pending,
 #processed:checked ~ nav label .processed,
-#processed:checked ~ nav label .checkout{
+#processed:checked ~ nav label .checkout,
+#processed:checked ~ nav label .done{
   color: hsla(10, 68%, 59%, 1);
 }
 
@@ -626,7 +627,7 @@ input[type='radio']{
   height: 4.5px;
   background-color: hsla(10, 68%, 59%, 1);
   border-radius: 20px;
-  width: 33.3%;
+  width: 25%;
   z-index: 1; 
   left: 0;
   bottom: 0;
@@ -639,11 +640,15 @@ input[type='radio']{
 }
 
 #processed:checked ~ nav .slider{
-  left: 33.3%;
+  left: 25%;
 }
 
 #checkout:checked ~ nav .slider{
-  left: 66.6%;
+  left: 50%;
+}
+
+#done:checked ~ nav .slider{
+  left: 75%;
 }
 
 #pending:checked ~ nav .pending{
@@ -655,6 +660,10 @@ input[type='radio']{
 }
 
 #checkout:checked ~ nav .checkout{
+  color: hsla(10, 68%, 59%, 1);
+}
+
+#done:checked ~ nav .done{
   color: hsla(10, 68%, 59%, 1);
 }
 
@@ -683,6 +692,9 @@ input[type='radio']{
   display: block;
 }
 
+#done:checked ~ .section-tab .content-4{
+  display: block;
+}
 
 .courses-container {
 }
