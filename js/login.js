@@ -1,8 +1,8 @@
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 
-var checker_email = false;
-var checker_password = false;
+let checker_email = false;
+let checker_password = false;
 
 email.addEventListener("keyup", function (e) {
     if (email.value === "") {
@@ -37,15 +37,14 @@ password.addEventListener("keyup", function (e) {
 });
 
 document.getElementById("submit").addEventListener("click", function (event) {
-    if (checker_email == false || checker_password == false) {
-        // prevent form submission
-        event.preventDefault();
+    event.preventDefault(); // urgent to prevent form submission
 
+    if (checker_email == false || checker_password == false) {
         // error handling
     } else {
-        console.log("Login successful");
-        // database check
         window.location.href = "home.html";
+
+        // database check
     }
 });
 

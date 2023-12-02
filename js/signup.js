@@ -4,11 +4,11 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const confPassword = document.getElementById("confPassword");
 
-var checker_name = false;
-var checker_phone = false;
-var checker_email = false;
-var checker_password = false;
-var checker_confPassword = false;
+let checker_name = false;
+let checker_phone = false;
+let checker_email = false;
+let checker_password = false;
+let checker_confPassword = false;
 
 nameUser.addEventListener("keyup", function (e) {
     if (nameUser.value === "") {
@@ -124,10 +124,9 @@ confPassword.addEventListener("keyup", function (e) {
 });
 
 document.getElementById("submit").addEventListener("click", function (event) {
-    if (checker_name == false || checker_phone == false || checker_email == false || checker_password == false || checker_confPassword == false) {
-        // prevent form submission
-        event.preventDefault();
+    event.preventDefault(); // urgent to prevent form submission
 
+    if (checker_name == false || checker_phone == false || checker_email == false || checker_password == false || checker_confPassword == false) {
         // error handling
     } else {
         console.log("Signup successful");
