@@ -41,6 +41,9 @@ document.getElementById("submit").addEventListener("click", function (event) {
 
     if (checker_email == false || checker_password == false) {
         // error handling
+
+        document.querySelector(".error-box").style.display = "flex";
+        document.querySelector(".error-message").innerHTML = "Please fill in all fields";
     } else {
         window.location.href = "home.html";
 

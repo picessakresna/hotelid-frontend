@@ -224,6 +224,7 @@ nav ul li a {
     cursor: pointer;
     transition: all 0.2s ease;
     background: hsla(10, 68%, 59%, 1);
+    border-radius: 5em;
 }
 .form button:hover {
     background: rgb(88, 56, 250);
@@ -288,4 +289,21 @@ nav ul li a {
 .input-box.error small {
     color: #e74c3c;
     visibility: visible;
+}
+
+.error-box {
+    margin-top: 3%;
+    position: relative;
+    background: hsla(10, 68%, 59%, 1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 6px;
+}
+
+.error-message {
+    padding: 2.5%;
 }
