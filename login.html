@@ -14,7 +14,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet" />
 
-        <link rel="stylesheet" href="css/styleformsignup.css" />
+        <link rel="stylesheet" href="css/styleformloginsignup.css" />
+
+        <script src="https://use.fontawesome.com/2e95bf0c1a.js"></script>
     </head>
 
     <body>
@@ -35,12 +37,18 @@
                     <form action="#" class="form">
                         <div class="input-box">
                             <label>Email Address</label>
-                            <input type="email" placeholder="Enter email address" required />
+                            <input type="email" id="email" placeholder="Enter email address" required />
+                            <i class="fa fa-check-circle"></i>
+                            <i class="fa fa-exclamation-circle"></i>
+                            <small>Error message</small>
                         </div>
 
                         <div class="input-box">
                             <label>Password</label>
-                            <input type="password" placeholder="Enter street address" required />
+                            <input type="password" id="password" placeholder="Enter street address" required />
+                            <i class="fa fa-check-circle"></i>
+                            <i class="fa fa-exclamation-circle"></i>
+                            <small>Error message</small>
                         </div>
                         <button id="submit">Login</button>
 
@@ -54,10 +62,7 @@
                 </section>
             </div>
         </div>
-        <script>
-            document.getElementById("submit").addEventListener("click", function (event) {
-                window.location.href = "home.html";
-            });
-        </script>
+        <script src="./js/regex.js"></script>
+        <script src="./js/login.js"></script>
     </body>
 </html>
