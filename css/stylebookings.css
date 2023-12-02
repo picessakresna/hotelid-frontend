@@ -755,6 +755,7 @@ input[type='radio']{
 	bottom: 30px;
 	right: 30px;
 	letter-spacing: 1px;
+  font-size: 0.8em;
 }
 
 /*-----------------------------------*\
