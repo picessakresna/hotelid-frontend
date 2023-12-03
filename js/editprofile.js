@@ -25,11 +25,23 @@ photoPreview.addEventListener("click", function () {
 });
 
 photo.addEventListener("change", function (e) {
-    var file = e.target.files[0];
-    var reader = new FileReader();
+    let file = e.target.files[0];
+    let reader = new FileReader();
 
     reader.onloadend = function () {
-        photoPreview.src = reader.result;
+        let base64String = reader.result.split(",")[1];
+
+        let byteSize = (base64String.length * 3) / 4;
+
+        if (byteSize > 2000000) {
+            photoPreview.src = "./img/user2.png";
+            setErrorPhoto(photo, "Photo must be less than 2MB");
+            checker_photo = false;
+        } else {
+            photoPreview.src = `data:image/png;base64,${base64String}`;
+            setSuccessPhoto(photo);
+            checker_photo = true;
+        }
     };
 
     if (file) {
@@ -149,7 +161,7 @@ confPassword.addEventListener("keyup", function (e) {
 document.getElementById("submit").addEventListener("click", function (event) {
     event.preventDefault(); // urgent to prevent form submission
 
-    if (checker_name == false || checker_phone == false || checker_email == false || checker_password == false || checker_confPassword == false) {
+    if (checker_name == false || checker_phone == false || checker_email == false || checker_password == false || checker_confPassword == false || checker_photo == false) {
         // error handling
 
         document.querySelector(".error-box").style.display = "flex";
