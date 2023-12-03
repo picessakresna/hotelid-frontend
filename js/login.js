@@ -42,11 +42,42 @@ document.getElementById("submit").addEventListener("click", function (event) {
     if (checker_email == false || checker_password == false) {
         // error handling
 
-        document.querySelector(".error-box").style.display = "flex";
-        document.querySelector(".error-message").innerHTML = "Please fill in all fields";
+        setErrorBox("Please fill in the form correctly");
     } else {
         window.location.href = "home.html";
 
-        // database check
+        // //  login
+        // login(email.value, password.value)
+        //     .then((data) => {
+        //         // If login is successful, redirect to home page
+        //         window.location.href = "home.html";
+        //     })
+        //     .catch((error) => {
+        //         // If there's an error, display it
+        //         setErrorBox(error.message);
+        //         setError(email, error.message);
+        //         setError(password, error.message);
+
+        //         checker_email = false;
+        //         checker_password = false;
+        //     });
     }
 });
+
+function login(email, password) {
+    return fetch(loginUrl, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+        credentials: "include", // include, same-origin, *omit
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            return data;
+        });
+}

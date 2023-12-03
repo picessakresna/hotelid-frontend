@@ -33,3 +33,8 @@ function setSuccessPhoto(input) {
     // add success class
     inputBox.className = "input-box-photo success";
 }
+
+function setErrorBox(message) {
+    document.querySelector(".error-box").style.display = "flex";
+    document.querySelector(".error-message").innerHTML = message;
+}

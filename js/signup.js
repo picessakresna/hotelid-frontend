@@ -125,8 +125,7 @@ document.getElementById("submit").addEventListener("click", function (event) {
     if (checker_name == false || checker_phone == false || checker_email == false || checker_password == false || checker_confPassword == false) {
         // error handling
 
-        document.querySelector(".error-box").style.display = "flex";
-        document.querySelector(".error-message").innerHTML = "Please fill in all fields";
+        setErrorBox("Please fill in the form correctly");
     } else {
         console.log("Signup successful");
         // database check
