@@ -1,4 +1,5 @@
 const photo = document.getElementById("photo");
+const photoPreview = document.getElementById("photoPreview");
 const nameUser = document.getElementById("name");
 const phone = document.getElementById("phone");
 const email = document.getElementById("email");
@@ -18,6 +19,23 @@ setSuccess(phone);
 setSuccess(email);
 setSuccess(password);
 setSuccess(confPassword);
+
+photoPreview.addEventListener("click", function () {
+    photo.click();
+});
+
+photo.addEventListener("change", function (e) {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function () {
+        photoPreview.src = reader.result;
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+});
 
 nameUser.addEventListener("keyup", function (e) {
     if (nameUser.value === "") {

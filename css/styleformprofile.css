@@ -263,8 +263,9 @@ nav ul li a {
     border: 1px solid #000;
     border-radius: 50%;
     cursor: pointer;
-    width: 50%;
-    max-height: 50%;
+    width: 20em; /* Set to desired width */
+    height: 20em; /* Set to desired height */
+    object-fit: cover;
     margin-top: 1.5%;
 }
 
