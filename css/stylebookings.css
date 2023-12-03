@@ -682,18 +682,22 @@ input[type='radio']{
 
 #pending:checked ~ .section-tab .content-1{
   display: block;
+  min-height: 46em;
 }
 
 #processed:checked ~ .section-tab .content-2{
   display: block;
+  min-height: 46em;
 }
 
 #checkout:checked ~ .section-tab .content-3{
   display: block;
+  min-height: 46em;
 }
 
 #done:checked ~ .section-tab .content-4{
   display: block;
+  min-height: 46em;
 }
 
 .courses-container {
