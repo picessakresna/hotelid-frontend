@@ -153,7 +153,8 @@ nav ul li a {
     width: 100%;
     margin-top: 33px;
 }
-.input-box label {
+.input-box label,
+.input-box-photo label {
     color: #333;
 }
 .form :where(.input-box input, .select-box) {
@@ -253,11 +254,36 @@ nav ul li a {
     }
 }
 
-.input-box.success input {
+.input-box-photo {
+    position: relative;
+    text-align: center;
+}
+
+.input-box-photo img {
+    border: 1px solid #000;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 50%;
+    max-height: 50%;
+    margin-top: 1.5%;
+}
+
+.input-box-photo img,
+.input-box-photo small {
+    padding: 0.5%;
+}
+
+.input-box-photo input {
+    display: none;
+}
+
+.input-box.success input,
+.input-box-photo.success img {
     border-color: #2ecc71;
 }
 
-.input-box.error input {
+.input-box.error input,
+.input-box-photo.error img {
     border-color: #e74c3c;
 }
 
@@ -286,7 +312,12 @@ nav ul li a {
     left: 3.7%;
 }
 
-.input-box.error small {
+.input-box-photo small {
+    visibility: hidden;
+}
+
+.input-box.error small,
+.input-box-photo.error small {
     color: #e74c3c;
     visibility: visible;
 }
