@@ -12,23 +12,18 @@ let checker_confPassword = false;
 
 nameUser.addEventListener("keyup", function (e) {
     if (nameUser.value === "") {
-        // tampilkan error dan tambahkan class error
         setError(nameUser, "Name must not be blank");
         checker_name = false;
     } else if (checkSymbol(nameUser.value)) {
-        // tampilkan error dan tambahkan class error
         setError(nameUser, "Name must not contain Symbol");
         checker_name = false;
     } else if (nameUser.value.length < 2) {
-        // tampilkan error dan tambahkan class error
         setError(nameUser, "Name must be more than one letter");
         checker_name = false;
     } else if (!checkName(nameUser.value)) {
-        // tampilkan error dan tambahkan class error
         setError(nameUser, "Name must not begin or end with a space");
         checker_name = false;
     } else {
-        // tambahkan class success
         setSuccess(nameUser);
         checker_name = true;
     }
@@ -36,34 +31,27 @@ nameUser.addEventListener("keyup", function (e) {
 
 phone.addEventListener("keyup", function (e) {
     if (phone.value === "") {
-        // tampilkan error dan tambahkan class error
         setError(phone, "The phone number must not be blank");
         checker_phone = false;
     } else if (checkString(phone.value)) {
-        // tampilkan error dan tambahkan class error
         setError(phone, "The phone number may not contain letters");
         checker_phone = false;
     } else if (phone.value.length < 3) {
-        // tampilkan error dan tambahkan class error
         setError(phone, "The phone number must consist of 3 to 12 numbers");
         checker_phone = false;
     } else if (checkSymbol(phone.value)) {
-        // tampilkan error dan tambahkan class error
         setError(phone, "The phone number must not contain Symbol");
         checker_phone = false;
     } else if (checkWhiteSpace(phone.value)) {
-        // tampilkan error dan tambahkan class error
         setError(phone, "The phone number must not begin or end with a space");
         checker_phone = false;
     } else if (!checkPhone(phone.value)) {
-        // tampilkan error dan tambahkan class error
         setError(phone, "Invalid phone number");
         checker_phone = false;
         // } else if (!checkUniquePhone(phone.value)) {
         //     setError(phone, "Phone already registered");
         //     checker_phone = false;
     } else {
-        // tambahkan class success
         setSuccess(phone);
         checker_phone = true;
     }
