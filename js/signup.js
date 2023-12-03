@@ -59,6 +59,9 @@ phone.addEventListener("keyup", function (e) {
         // tampilkan error dan tambahkan class error
         setError(phone, "Invalid phone number");
         checker_phone = false;
+        // } else if (!checkUniquePhone(phone.value)) {
+        //     setError(phone, "Phone already registered");
+        //     checker_phone = false;
     } else {
         // tambahkan class success
         setSuccess(phone);
@@ -76,6 +79,9 @@ email.addEventListener("keyup", function (e) {
     } else if (!checkEmail(email.value)) {
         setError(email, "Invalid email");
         checker_email = false;
+        // } else if (!checkUniqueEmail(email.value)) {
+        //     setError(email, "Email already registered");
+        //     checker_email = false;
     } else {
         setSuccess(email);
         checker_email = true;
@@ -95,20 +101,22 @@ password.addEventListener("keyup", function (e) {
     } else {
         setSuccess(password);
         checker_password = true;
+
+        if (confPassword.value !== password.value && confPassword.value !== "") {
+            setError(confPassword, "Password does not match");
+            setError(password, "Password does not match");
+
+            checker_confPassword = false;
+            checker_password = false;
+        } else if (confPassword.value === password.value && confPassword.value !== "") {
+            setSuccess(confPassword);
+            checker_confPassword = true;
+        }
     }
 });
 
 confPassword.addEventListener("keyup", function (e) {
-    if (confPassword.value === "") {
-        setError(confPassword, "Password must not be blank");
-        checker_confPassword = false;
-    } else if (confPassword.value.length < 5) {
-        setError(confPassword, "Passwords must be 5 to 28 characters long");
-        checker_confPassword = false;
-    } else if (checkWhiteSpace(confPassword.value)) {
-        setError(confPassword, "Password must not contain white space");
-        checker_confPassword = false;
-    } else if (confPassword.value !== password.value) {
+    if (confPassword.value !== password.value) {
         setError(confPassword, "Password does not match");
         setError(password, "Password does not match");
 
