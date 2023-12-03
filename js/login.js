@@ -44,40 +44,41 @@ document.getElementById("submit").addEventListener("click", function (event) {
 
         setErrorBox("Please fill in the form correctly");
     } else {
-        window.location.href = "home.html";
+        // for debugging
+        // window.location.href = "home.html";
 
-        // //  login
-        // login(email.value, password.value)
-        //     .then((data) => {
-        //         // If login is successful, redirect to home page
-        //         window.location.href = "home.html";
-        //     })
-        //     .catch((error) => {
-        //         // If there's an error, display it
-        //         setErrorBox(error.message);
-        //         setError(email, error.message);
-        //         setError(password, error.message);
+        //  login
+        fetch(loginUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email: email.value, password: password.value }),
+            credentials: "include",
+        })
+            .then((response) => {
+                console.log(response.status); // Log the response status code
+                if (response.ok) {
+                    // If login is successful, redirect to home page
+                    window.location.href = "home.html";
+                } else {
+                    response.json().then((data) => {
+                        setErrorBox(data.msg);
+                        setError(email, data.msg);
+                        setError(password, data.msg);
+                    });
+                    checker_email = false;
+                    checker_password = false;
+                }
+            })
+            .catch((error) => {
+                // If there's an error, display it
+                setErrorBox(error.message);
+                setError(email, error.message);
+                setError(password, error.message);
 
-        //         checker_email = false;
-        //         checker_password = false;
-        //     });
+                checker_email = false;
+                checker_password = false;
+            });
     }
 });
-
-function login(email, password) {
-    return fetch(loginUrl, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-        credentials: "include", // include, same-origin, *omit
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            if (data.error) {
-                throw new Error(data.error);
-            }
-            return data;
-        });
-}

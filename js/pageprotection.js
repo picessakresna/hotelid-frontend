@@ -1,5 +1,7 @@
 checkLogin().then((isLoggedIn) => {
     if (!isLoggedIn) {
+        alert("You are not logged in. You will be redirected to the login page.");
+
         window.location.href = "login.html";
     }
 
@@ -13,6 +15,10 @@ async function checkLogin() {
             credentials: "include", // include, same-origin, *omit
         });
 
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
 
         if (data.error) {
@@ -21,6 +27,7 @@ async function checkLogin() {
 
         return true; // User is logged in
     } catch (error) {
+        console.error(error); // Log the error for debugging
         return false; // User is not logged in
     }
 }
