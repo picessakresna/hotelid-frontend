@@ -104,27 +104,38 @@
             <article>
                 <section class="container-form">
                     <div class="image-box">
-                        <img src="img/blog-2.jpg" alt="">
+                        <img id="photo" src="img/blog-2.jpg" alt="" />
                     </div>
                     <form action="#" class="form">
                         <header>Bookings Form</header>
+                        <div class="error-box">
+                            <div class="error-message">Error message</div>
+                        </div>
                         <div class="column">
                             <div class="input-box">
                                 <label>Start Date</label>
                                 <input type="date" id="startDate" placeholder="Start Date" required />
+                                <small>Error message</small>
                             </div>
                             <div class="input-box">
                                 <label>End Date</label>
                                 <input type="date" id="endDate" placeholder="End Date" required />
+                                <small>Error message</small>
                             </div>
                         </div>
-                        </div>
-                        <div class="input-box address">
+                        <div class="input-box">
                             <label>How Much Rooms</label>
-                            <input type="number" placeholder="Enter number of rooms" min="1" required />
+                            <input type="number" id="totalRoom" placeholder="Enter number of rooms" min="1" required />
+                            <small>Error message</small>
                         </div>
-                        <h1>Total: Rp150.000</h1>
-                        <button>Book</button>
+                        <div class="input-box">
+                            <h3 id="roomNameDisplay">Kamar Royal</h3>
+                            <span id="currentPriceDisplay">Current Price: Rp</span>
+                            <span id="totalDaysDisplay">Total Days: </span>
+                            <span id="totalRoomDisplay">Total Rooms: </span>
+                            <h4 id="totalPriceDisplay">Total: Rp</h4>
+                        </div>
+                        <button id="submit">Book</button>
                     </form>
                 </section>
             </article>
@@ -138,6 +149,10 @@
             }
         </script>
 
+        <script src="./config/config.js"></script>
+        <script src="./js/validationtool.js"></script>
+        <script src="./js/regex.js"></script>
+        <script src="./js/bookingstool.js"></script>
         <script src="js/index.js"></script>
         <script src="./js/formbookings.js"></script>
 
