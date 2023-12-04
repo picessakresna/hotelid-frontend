@@ -3,12 +3,11 @@ const checkout = document.getElementById("checkout");
 const review = document.getElementById("review");
 
 edit.addEventListener("click", () => {
-    sessionStorage.setItem("statusBookings", "edit");
-    window.location.href = "formbookings.html";
+    window.location.href = "formbookings.html?bookingId=1";
 });
 
 checkout.addEventListener("click", () => {});
 
 review.addEventListener("click", () => {
-    window.location.href = "formreview.html";
+    window.location.href = "formreview.html?bookingId=1";
 });

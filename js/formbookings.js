@@ -8,6 +8,10 @@ const totalDaysDisplay = document.getElementById("totalDaysDisplay");
 const totalRoomDisplay = document.getElementById("totalRoomDisplay");
 const totalPriceDisplay = document.getElementById("totalPriceDisplay");
 
+const params = new URLSearchParams(window.location.search);
+const roomId = params.get("roomId");
+const bookingId = params.get("bookingId");
+
 const currentPrice = 100000;
 currentPriceDisplay.innerHTML = "Current Price: Rp" + currentPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -24,8 +28,9 @@ let tomorrow = dateFormatter(new Date(new Date().getTime() + 24 * 60 * 60 * 1000
 startDate.min = today;
 endDate.min = tomorrow;
 
-if (sessionStorage.getItem("statusBookings") == "edit") {
-    sessionStorage.removeItem("statusBookings");
+if (bookingId) {
+    document.getElementById("submit").style.display = "none";
+    document.getElementById("edit").style.display = "inherit";
 
     // for debugging
     startDate.value = "2023-12-12";
@@ -43,7 +48,10 @@ if (sessionStorage.getItem("statusBookings") == "edit") {
         calculateTotalPrice(calculateTotalDays(startDate.value, endDate.value), totalRoom.value, currentPrice)
             .toString()
             .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-} else {
+} else if (roomId) {
+    document.getElementById("submit").style.display = "inherit";
+    document.getElementById("edit").style.display = "none";
+
     startDate.value = today;
     endDate.value = tomorrow;
 
@@ -129,6 +137,19 @@ totalRoom.addEventListener("change", function (e) {
 });
 
 document.getElementById("submit").addEventListener("click", function (event) {
+    event.preventDefault(); // urgent to prevent form submission
+
+    if (checker_startDate == false || checker_endDate == false || checker_totalRoom == false) {
+        // error handling
+
+        setErrorBox("Please fill in the form correctly");
+    } else {
+        // for debugging
+        window.location.href = "bookings.html";
+    }
+});
+
+document.getElementById("edit").addEventListener("click", function (event) {
     event.preventDefault(); // urgent to prevent form submission
 
     if (checker_startDate == false || checker_endDate == false || checker_totalRoom == false) {

@@ -22,6 +22,9 @@
     <body>
         <div class="wrapper">
             <h3>Improve with us! Fill out our quick review form and share your experience</h3>
+            <div class="error-box">
+                <div class="error-message">Error message</div>
+            </div>
             <form action="#">
                 <div class="rating">
                     <input type="number" id="rating" name="rating" hidden />
@@ -31,14 +34,21 @@
                     <i class="bx bx-star star" style="--i: 3"></i>
                     <i class="bx bx-star star" style="--i: 4"></i>
                 </div>
-                <textarea id="review" name="review" cols="30" rows="5" placeholder="Your opinion..."></textarea>
+                <div class="input-box">
+                    <textarea id="review" name="review" cols="30" rows="5" placeholder="Your opinion..."></textarea>
+                    <small>Error message</small>
+                </div>
+
                 <div class="btn-group">
-                    <button type="submit" class="btn submit">Submit</button>
+                    <button type="submit" id="submit" class="btn submit">Submit</button>
                     <button class="btn cancel">Cancel</button>
                 </div>
             </form>
         </div>
 
+        <script src="./config/config.js"></script>
+        <script src="./js/validationtool.js"></script>
+        <script src="./js/regex.js"></script>
         <script src="js/ratings.js"></script>
     </body>
 </html>
