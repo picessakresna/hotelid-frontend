@@ -146,12 +146,8 @@ document.getElementById("submit").addEventListener("click", function (event) {
 
     if (checker_name == false || checker_phone == false || checker_email == false || checker_password == false || checker_confPassword == false) {
         // error handling
-
         setErrorBox("Please fill in the form correctly");
     } else {
-        // for debugging
-        // window.location.href = "home.html";
-
         // signup
         fetch(registerUrl, {
             method: "POST",
@@ -170,38 +166,50 @@ document.getElementById("submit").addEventListener("click", function (event) {
             .then((response) => {
                 console.log(response.status); // Log the response status code
                 if (response.ok) {
-                    // If signup is successful, redirect to home page
+                    // If signup is successful, redirect to login page
                     window.location.href = "login.html";
                 } else {
                     response.json().then((data) => {
                         setErrorBox(data.msg);
-                        setError(nameUser, data.msg);
-                        setError(phone, data.msg);
-                        setError(email, data.msg);
-                        setError(password, data.msg);
-                        setError(confPassword, data.msg);
+                        setError(nameUser, "");
+                        setError(phone, "");
+                        setError(email, "");
+                        setError(password, "");
+                        setError(confPassword, "");
                     });
                     checker_name = false;
                     checker_phone = false;
                     checker_email = false;
                     checker_password = false;
                     checker_confPassword = false;
+
+                    nameUser.value = "";
+                    phone.value = "";
+                    email.value = "";
+                    password.value = "";
+                    confPassword.value = "";
                 }
             })
             .catch((error) => {
                 // If there's an error, display it
                 setErrorBox(error.message);
-                setError(nameUser, error.message);
-                setError(phone, error.message);
-                setError(email, error.message);
-                setError(password, error.message);
-                setError(confPassword, error.message);
+                setError(nameUser, "");
+                setError(phone, "");
+                setError(email, "");
+                setError(password, "");
+                setError(confPassword, "");
 
                 checker_name = false;
                 checker_phone = false;
                 checker_email = false;
                 checker_password = false;
                 checker_confPassword = false;
+
+                nameUser.value = "";
+                phone.value = "";
+                email.value = "";
+                password.value = "";
+                confPassword.value = "";
             });
     }
 });

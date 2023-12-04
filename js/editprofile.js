@@ -220,12 +220,8 @@ document.getElementById("submit").addEventListener("click", function (event) {
 
     if (checker_name == false || checker_phone == false || checker_email == false || checker_password == false || checker_confPassword == false || checker_photo == false) {
         // error handling
-
         setErrorBox("Please fill in the form correctly");
     } else {
-        // for debugging
-        // window.location.href = "home.html";
-
         let data = {};
 
         if (nameUser.value !== profileInfo.name) {
@@ -261,42 +257,55 @@ document.getElementById("submit").addEventListener("click", function (event) {
             // rest of your code
             .then((response) => {
                 if (response.ok) {
-                    // window.location.href = "home.html";
-                    console.log(response);
+                    window.location.href = "profile.html";
                 } else {
                     response.json().then((data) => {
                         setErrorBox(data.msg);
-                        setError(nameUser, data.msg);
-                        setError(phone, data.msg);
-                        setError(email, data.msg);
-                        setError(password, data.msg);
-                        setError(confPassword, data.msg);
-                        setErrorPhoto(photo, data.msg);
+                        setSuccessPhoto(photo);
+                        setSuccess(nameUser);
+                        setSuccess(phone);
+                        setSuccess(email);
+                        setSuccess(password);
+                        setSuccess(confPassword);
                     });
-                    checker_name = false;
-                    checker_phone = false;
-                    checker_email = false;
-                    checker_password = false;
-                    checker_confPassword = false;
-                    checker_photo = false;
+                    checker_name = true;
+                    checker_phone = true;
+                    checker_email = true;
+                    checker_password = true;
+                    checker_confPassword = true;
+                    checker_photo = true;
+
+                    nameUser.value = profileInfo.name;
+                    phone.value = profileInfo.phone;
+                    email.value = profileInfo.email;
+                    password.value = "";
+                    confPassword.value = "";
+                    photoPreview.src = `data:image/png;base64,${profileInfo.photo}`;
                 }
             })
             .catch((error) => {
                 // If there's an error, display it
                 setErrorBox(error.message);
-                setError(nameUser, error.message);
-                setError(phone, error.message);
-                setError(email, error.message);
-                setError(password, error.message);
-                setError(confPassword, error.message);
-                setErrorPhoto(photo, error.message);
+                setSuccessPhoto(photo);
+                setSuccess(nameUser);
+                setSuccess(phone);
+                setSuccess(email);
+                setSuccess(password);
+                setSuccess(confPassword);
 
-                checker_name = false;
-                checker_phone = false;
-                checker_email = false;
-                checker_password = false;
-                checker_confPassword = false;
-                checker_photo = false;
+                checker_name = true;
+                checker_phone = true;
+                checker_email = true;
+                checker_password = true;
+                checker_confPassword = true;
+                checker_photo = true;
+
+                nameUser.value = profileInfo.name;
+                phone.value = profileInfo.phone;
+                email.value = profileInfo.email;
+                password.value = "";
+                confPassword.value = "";
+                photoPreview.src = `data:image/png;base64,${profileInfo.photo}`;
             });
     }
 });
