@@ -48,9 +48,9 @@ phone.addEventListener("keyup", function (e) {
     } else if (!checkPhone(phone.value)) {
         setError(phone, "Invalid phone number");
         checker_phone = false;
-        // } else if (!checkUniquePhone(phone.value)) {
-        //     setError(phone, "Phone already registered");
-        //     checker_phone = false;
+    } else if (!checkUniquePhone(phone.value)) {
+        setError(phone, "Phone already registered");
+        checker_phone = false;
     } else {
         setSuccess(phone);
         checker_phone = true;
@@ -67,9 +67,9 @@ email.addEventListener("keyup", function (e) {
     } else if (!checkEmail(email.value)) {
         setError(email, "Invalid email");
         checker_email = false;
-        // } else if (!checkUniqueEmail(email.value)) {
-        //     setError(email, "Email already registered");
-        //     checker_email = false;
+    } else if (!checkUniqueEmail(email.value)) {
+        setError(email, "Email already registered");
+        checker_email = false;
     } else {
         setSuccess(email);
         checker_email = true;
@@ -131,7 +131,7 @@ document.getElementById("submit").addEventListener("click", function (event) {
         // window.location.href = "home.html";
 
         // signup
-        fetch(signupUrl, {
+        fetch(registerUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -141,6 +141,7 @@ document.getElementById("submit").addEventListener("click", function (event) {
                 phone: phone.value,
                 email: email.value,
                 password: password.value,
+                confPassword: confPassword.value,
             }),
             credentials: "include",
         })
@@ -156,11 +157,13 @@ document.getElementById("submit").addEventListener("click", function (event) {
                         setError(phone, data.msg);
                         setError(email, data.msg);
                         setError(password, data.msg);
+                        setError(confPassword, data.msg);
                     });
                     checker_name = false;
                     checker_phone = false;
                     checker_email = false;
                     checker_password = false;
+                    checker_confPassword = false;
                 }
             })
             .catch((error) => {
@@ -170,11 +173,13 @@ document.getElementById("submit").addEventListener("click", function (event) {
                 setError(phone, error.message);
                 setError(email, error.message);
                 setError(password, error.message);
+                setError(confPassword, error.message);
 
                 checker_name = false;
                 checker_phone = false;
                 checker_email = false;
                 checker_password = false;
+                checker_confPassword = false;
             });
     }
 });
