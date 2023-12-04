@@ -11,15 +11,44 @@ const totalPriceDisplay = document.getElementById("totalPriceDisplay");
 const currentPrice = 100000;
 currentPriceDisplay.innerHTML = "Current Price: Rp" + currentPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-let checker_startDate = false;
-let checker_endDate = false;
+let checker_startDate = true;
+let checker_endDate = true;
 let checker_totalRoom = false;
+
+setSuccess(startDate);
+setSuccess(endDate);
 
 let today = dateFormatter(new Date());
 let tomorrow = dateFormatter(new Date(new Date().getTime() + 24 * 60 * 60 * 1000));
 
 startDate.min = today;
 endDate.min = tomorrow;
+
+if (sessionStorage.getItem("statusBookings") == "edit") {
+    sessionStorage.removeItem("statusBookings");
+
+    // for debugging
+    startDate.value = "2023-12-12";
+    endDate.value = "2023-12-18";
+    totalRoom.value = "3";
+
+    setSuccess(totalRoom);
+    checker_totalRoom = true;
+
+    roomNameDisplay.innerHTML = "Test";
+    totalDaysDisplay.innerHTML = "Total Days: " + calculateTotalDays(startDate.value, endDate.value) + " Days";
+    totalRoomDisplay.innerHTML = "Total Rooms: " + totalRoom.value + " Rooms";
+    totalPriceDisplay.innerHTML =
+        "Total: Rp" +
+        calculateTotalPrice(calculateTotalDays(startDate.value, endDate.value), totalRoom.value, currentPrice)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+} else {
+    startDate.value = today;
+    endDate.value = tomorrow;
+
+    totalDaysDisplay.innerHTML = "Total Days: " + calculateTotalDays(startDate.value, endDate.value) + " Days";
+}
 
 startDate.addEventListener("change", function (e) {
     if (startDate.value === "") {
@@ -39,11 +68,14 @@ startDate.addEventListener("change", function (e) {
         checker_endDate = true;
 
         totalDaysDisplay.innerHTML = "Total Days: " + calculateTotalDays(startDate.value, endDate.value) + " Days";
-        totalPriceDisplay.innerHTML =
-            "Total: Rp" +
-            calculateTotalPrice(calculateTotalDays(startDate.value, endDate.value), totalRoom.value, currentPrice)
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+        if (totalRoom.value != "") {
+            totalPriceDisplay.innerHTML =
+                "Total: Rp" +
+                calculateTotalPrice(calculateTotalDays(startDate.value, endDate.value), totalRoom.value, currentPrice)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
     }
 });
 
@@ -62,11 +94,14 @@ endDate.addEventListener("change", function (e) {
         checker_startDate = true;
 
         totalDaysDisplay.innerHTML = "Total Days: " + calculateTotalDays(startDate.value, endDate.value) + " Days";
-        totalPriceDisplay.innerHTML =
-            "Total: Rp" +
-            calculateTotalPrice(calculateTotalDays(startDate.value, endDate.value), totalRoom.value, currentPrice)
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+        if (totalRoom.value != "") {
+            totalPriceDisplay.innerHTML =
+                "Total: Rp" +
+                calculateTotalPrice(calculateTotalDays(startDate.value, endDate.value), totalRoom.value, currentPrice)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
     }
 });
 
@@ -82,11 +117,14 @@ totalRoom.addEventListener("change", function (e) {
         checker_totalRoom = true;
 
         totalRoomDisplay.innerHTML = "Total Rooms: " + totalRoom.value + " Rooms";
-        totalPriceDisplay.innerHTML =
-            "Total: Rp" +
-            calculateTotalPrice(calculateTotalDays(startDate.value, endDate.value), totalRoom.value, currentPrice)
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+        if (startDate.value != "" && endDate.value != "") {
+            totalPriceDisplay.innerHTML =
+                "Total: Rp" +
+                calculateTotalPrice(calculateTotalDays(startDate.value, endDate.value), totalRoom.value, currentPrice)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
     }
 });
 

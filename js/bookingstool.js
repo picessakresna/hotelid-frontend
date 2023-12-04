@@ -7,7 +7,7 @@ function dateFormatter(date) {
 }
 
 function calculateTotalPrice(diffDays, totalR, currentP) {
-    if (diffDays === "" || totalR === "" || currentP === "") {
+    if (!diffDays || !totalR || !currentP) {
         return;
     }
 
@@ -16,7 +16,7 @@ function calculateTotalPrice(diffDays, totalR, currentP) {
 }
 
 function calculateTotalDays(startD, endD) {
-    if (startD === "" || endD === "") {
+    if (!startD || !endD) {
         return;
     }
 
