@@ -148,7 +148,7 @@ document.getElementById("submit").addEventListener("click", function (event) {
                 console.log(response.status); // Log the response status code
                 if (response.ok) {
                     // If signup is successful, redirect to home page
-                    window.location.href = "home.html";
+                    window.location.href = "login.html";
                 } else {
                     response.json().then((data) => {
                         setErrorBox(data.msg);
