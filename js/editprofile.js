@@ -14,6 +14,7 @@ let checker_password = true;
 let checker_confPassword = true;
 
 let base64String;
+let profileInfo;
 
 setSuccessPhoto(photo);
 setSuccess(nameUser);
@@ -22,13 +23,13 @@ setSuccess(email);
 setSuccess(password);
 setSuccess(confPassword);
 
-let profileInfo;
 getProfileInfo()
     .then((info) => {
         profileInfo = info;
-        console.log(profileInfo);
 
-        photoPreview.src = `data:image/png;base64,${profileInfo.photo}`;
+        base64String = profileInfo.photo;
+
+        photoPreview.src = `data:image/png;base64,${base64String}`;
         nameUser.value = profileInfo.name;
         phone.value = profileInfo.phone;
         email.value = profileInfo.email;
@@ -164,6 +165,9 @@ email.addEventListener("keyup", function (e) {
 });
 
 password.addEventListener("keyup", function (e) {
+    setError(confPassword, "Password does not match");
+    checker_confPassword = false;
+
     if (password.value === "") {
         setSuccess(password);
         checker_password = true;
@@ -183,7 +187,7 @@ password.addEventListener("keyup", function (e) {
 
             checker_confPassword = false;
             checker_password = false;
-        } else if (confPassword.value === password.value && confPassword.value !== "") {
+        } else if (confPassword.value === password.value) {
             setSuccess(confPassword);
             checker_confPassword = true;
         }
@@ -217,38 +221,43 @@ document.getElementById("submit").addEventListener("click", function (event) {
         // for debugging
         // window.location.href = "home.html";
 
-        let formData = new FormData();
+        let data = {};
 
         if (nameUser.value !== profileInfo.name) {
-            formData.append("name", nameUser.value);
+            data.name = nameUser.value;
         }
 
         if (phone.value !== profileInfo.phone) {
-            formData.append("phone", phone.value);
+            data.phone = phone.value;
         }
 
         if (email.value !== profileInfo.email) {
-            formData.append("email", email.value);
+            data.email = email.value;
         }
 
         if (password.value !== "") {
-            formData.append("password", password.value);
-            formData.append("confPassword", confPassword.value);
+            data.password = password.value;
+            data.confPassword = confPassword.value;
         }
 
         if (base64String !== profileInfo.photo) {
-            formData.append("photo", base64String);
+            data.photo = base64String;
         }
 
-        // Use fetch to send the form data
+        // Use fetch to send the data as JSON
         fetch(updateProfileUrl, {
             method: "PATCH",
-            body: formData,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
             credentials: "include",
         })
+            // rest of your code
             .then((response) => {
                 if (response.ok) {
-                    window.location.href = "home.html";
+                    // window.location.href = "home.html";
+                    console.log(response);
                 } else {
                     response.json().then((data) => {
                         setErrorBox(data.msg);
