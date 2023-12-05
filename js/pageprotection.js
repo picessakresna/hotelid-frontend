@@ -1,11 +1,18 @@
 checkLogin().then((isLoggedIn) => {
+    isIndexPage = window.location.href === "https://kampus-merdeka-software-engineering.github.io/FE-2-Medan-14/" || window.location.pathname.endsWith("index.html");
+    isLoginPage = window.location.pathname.endsWith("login.html");
+    isSignupPage = window.location.pathname.endsWith("signup.html");
+
     if (!isLoggedIn) {
-        alert("You are not logged in. You will be redirected to the login page.");
-
-        window.location.href = "login.html";
+        if (!isIndexPage && !isLoginPage && !isSignupPage) {
+            alert("You are not logged in. You will be redirected to the login page.");
+            window.location.href = "login.html";
+        }
+    } else {
+        if (isIndexPage || isLoginPage || isSignupPage) {
+            window.location.href = "home.html";
+        }
     }
-
-    console.log("User is logged in");
 });
 
 async function checkLogin() {
