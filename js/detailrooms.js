@@ -53,3 +53,8 @@ function setRating(rating, totalBooking) {
 
 // Call the function with the desired rating
 setRating(5, 8);
+
+// booking button
+document.getElementById("booking").addEventListener("click", () => {
+    window.location.href = "formbookings.html?roomId=1";
+});
