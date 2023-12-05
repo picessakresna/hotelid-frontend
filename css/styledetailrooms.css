@@ -682,6 +682,7 @@ nav ul li a {
     position: relative;
     color: #12263a;
     margin: 1rem 0;
+    margin-bottom: 15px;
 }
 .product-title::after {
     content: "";

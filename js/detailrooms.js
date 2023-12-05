@@ -20,7 +20,7 @@ window.addEventListener("resize", slideImage);
 
 // setting stars rating
 function setRating(rating, totalBooking) {
-    if (!rating || !totalBooking) {
+    if (!rating || !totalBooking || rating < 1 || rating > 5 || totalBooking < 1) {
         document.getElementById("productRating").style.display = "none";
         return;
     }
@@ -52,4 +52,4 @@ function setRating(rating, totalBooking) {
 }
 
 // Call the function with the desired rating
-setRating(2, 8);
+setRating(5, 8);
