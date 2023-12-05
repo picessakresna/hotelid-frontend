@@ -742,8 +742,7 @@ nav ul li a {
 .product-detail ul {
     font-size: 1.6rem;
     padding: 0.3rem;
-    opacity: 0.8;
-    color: var(--black-coral);
+    color: #707070;
     line-height: 1.7;
 }
 .product-detail ul {
@@ -752,15 +751,10 @@ nav ul li a {
 .product-detail ul li {
     margin: 0;
     list-style: none;
-    background: url(shoes_images/checked.png) left center no-repeat;
     background-size: 18px;
     padding-left: 0.3rem;
     margin: 0.4rem 0;
-    font-weight: 600;
-    opacity: 0.9;
-}
-.product-detail ul li span {
-    font-weight: 400;
+    font-weight: 500;
 }
 .purchase-info {
     margin: 1.5rem 0;
