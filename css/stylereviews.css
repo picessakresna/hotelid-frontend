@@ -887,7 +887,10 @@ nav ul li a {
 }
 
 .testimonial-section{
-    margin-top: 1em;
+    margin-top: 7em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .testimonial-card{
     box-shadow: var(--shadow-2);
@@ -895,6 +898,7 @@ nav ul li a {
     padding: 20px;
     margin-top: 15px;
     border-radius: 8px;
+    width: 1400px;
 }
 
 .testimonial-picture{
@@ -923,6 +927,9 @@ nav ul li a {
     flex-direction: column;
 }
 
+.user-name{
+    opacity: 0.7;
+}
 .testimonial-reviews{
     color: #ffba0a;
 }
@@ -942,7 +949,7 @@ nav ul li a {
 .comment-info {
     margin: 1.5rem 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 .comment-info input,
 .comment-info .btn {
@@ -954,9 +961,7 @@ nav ul li a {
     margin-right: 0.2rem;
     margin-bottom: 1rem;
 }
-.comment-info input {
-    width: 60px;
-}
+
 .comment-info .btn {
     cursor: pointer;
     color: var(--white);
