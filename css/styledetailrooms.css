@@ -715,6 +715,10 @@ nav ul li a {
     font-weight: 600;
     color: #252525;
 }
+.product-rating .fa-user {
+    font-size: 10rem;
+}
+
 .product-price {
     margin: 1rem 0;
     font-size: 1.4rem;
@@ -731,12 +735,12 @@ nav ul li a {
     color: #256eff;
 }
 .product-detail {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 .product-detail h2 {
     text-transform: capitalize;
     color: #12263a;
-    padding-bottom: 0.6rem;
+    margin-bottom: -4px;
 }
 .product-detail p,
 .product-detail ul {
@@ -747,6 +751,9 @@ nav ul li a {
 }
 .product-detail ul {
     margin: 1rem 0;
+}
+.product-detail p {
+    margin-bottom: 2.8rem;
 }
 .product-detail ul li {
     margin: 0;
@@ -827,7 +834,7 @@ nav ul li a {
     margin-left: 1%;
     color: #b8b8b8;
     text-decoration: line-through;
-    font-size: var(--fs-7);
+    font-size: var(--fs-6);
 }
 
 .discount {
@@ -853,7 +860,7 @@ nav ul li a {
 }
 
 .card-price h4 {
-    font-size: var(--fs-5);
+    font-size: calc(2.4rem + 0.66vw);
     font-weight: 600;
     color: var(--orange-soda);
 }

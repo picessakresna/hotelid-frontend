@@ -48,11 +48,11 @@ function setRating(rating, totalBooking) {
     }
 
     // Set rating text
-    ratingText.textContent = `${rating} (${totalBooking})`;
+    ratingText.innerHTML = `${rating.toFixed(2)} (${totalBooking} rating)`;
 }
 
 // Call the function with the desired rating
-setRating(5, 8);
+setRating(5, 1000);
 
 // booking button
 document.getElementById("booking").addEventListener("click", () => {
