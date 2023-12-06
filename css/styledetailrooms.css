@@ -1083,7 +1083,6 @@ nav ul li a {
         align-items: flex-start;
     }
     .card-wrapper {
-        height: 100vh;
         display: flex;
         justify-content: center;
     }
@@ -1093,7 +1092,7 @@ nav ul li a {
         justify-content: center;
         margin-top: 26.3%;
         position: sticky;
-        top: 0;
+        top: 130px;
     }
     .product-content {
         margin-top: 18%;
