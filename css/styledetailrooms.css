@@ -1014,6 +1014,10 @@ nav ul li a {
         border-color: var(--violet-blue-crayola);
         color: var(--violet-blue-crayola);
     }
+
+    .product-imgs {
+        margin-top: 20%;
+    }
 }
 
 /**
@@ -1076,20 +1080,23 @@ nav ul li a {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 1.5rem;
+        align-items: flex-start;
     }
     .card-wrapper {
         height: 100vh;
         display: flex;
         justify-content: center;
-        align-items: center;
     }
     .product-imgs {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        margin-top: 26.3%;
+        position: sticky;
+        top: 0;
     }
     .product-content {
-        padding-top: 0;
+        margin-top: 18%;
     }
 
     /**
