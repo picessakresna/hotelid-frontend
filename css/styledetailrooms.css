@@ -781,8 +781,18 @@ nav ul li a {
 }
 
 .purchase-info .btn:hover {
-    opacity: 0.9;
+    opacity: 0.8;
 }
+
+.btn.cancel {
+    background: var(--white);
+    color: var(--violet-blue-crayola);
+    border: 1px solid var(--violet-blue-crayola);
+}
+.btn.cancel:hover {
+    background: var(--light);
+}
+
 .social-links {
     display: flex;
     align-items: center;

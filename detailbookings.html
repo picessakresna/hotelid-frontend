@@ -21,6 +21,7 @@
             integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
             crossorigin="anonymous"
         />
+        <script src="https://kit.fontawesome.com/6f3e2f204d.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <header class="header" data-header>
@@ -129,9 +130,10 @@
                                 </div>
 
                                 <div class="purchase-info">
-                                    <button type="button" class="btn" id="edit">Edit</button>
-                                    <button type="button" class="btn" id="checkout">Check Out</button>
-                                    <button type="button" class="btn" id="review">Review</button>
+                                    <button type="button" class="btn" id="edit"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                                    <button type="button" class="btn" id="checkout"><i class="fa-solid fa-check"></i> Check Out</button>
+                                    <button type="button" class="btn" id="review"><i class="fa-regular fa-message"></i> Review</button>
+                                    <button id="cancel" class="btn cancel">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -146,6 +148,7 @@
         <script src="./js/index.js"></script>
         <script src="./js/bookingstool.js"></script>
         <script src="./js/detailbookings.js"></script>
+        <script src="./js/cancel.js"></script>
 
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

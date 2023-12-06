@@ -340,6 +340,11 @@ body.nav-active {
     background-color: var(--violet-blue-crayola);
     color: var(--white);
     font-size: 1.2rem;
+    transition: all 0.2s ease;
+}
+
+.card-button:hover {
+    opacity: 0.8;
 }
 
 .has-scrollbar {
@@ -938,19 +943,18 @@ nav ul li a {
 #load-more {
     margin-top: 20px;
     display: inline-block;
-    padding: 13px 30px;
+    padding: 12px 55px;
     border-color: var(--violet-blue-crayola);
     color: var(--white);
     font-size: 16px;
     background-color: var(--violet-blue-crayola);
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 100px;
+    transition: all 0.2s ease;
 }
 
 #load-more:hover {
-    background-color: salmon;
-    border-color: var(--violet-blue-crayola);
-    color: var(--violet-blue-crayola);
+    opacity: 0.8;
 }
 
 @media (max-width: 450px) {

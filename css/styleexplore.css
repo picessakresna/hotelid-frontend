@@ -340,6 +340,11 @@ body.nav-active {
     background-color: var(--violet-blue-crayola);
     color: var(--white);
     font-size: 1.2rem;
+    transition: all 0.2s ease;
+}
+
+.card-button:hover {
+    opacity: 0.8;
 }
 
 .has-scrollbar {

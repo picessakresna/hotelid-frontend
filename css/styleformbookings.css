@@ -747,10 +747,10 @@ article {
     cursor: pointer;
     transition: all 0.2s ease;
     background: var(--violet-blue-crayola);
-    border-radius: 25px;
+    border-radius: 100px;
 }
 .form button:hover {
-    background: var(--violet-blue-crayola);
+    opacity: 0.8;
 }
 
 .input-box {
