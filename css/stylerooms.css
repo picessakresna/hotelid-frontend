@@ -1051,13 +1051,14 @@ nav ul li a {
     transform: rotate(-180deg);
 }
 .navigation-list-items {
-    position: relative;
+    position: absolute;
     margin-top: 15px;
     border-radius: 8px;
     padding: 16px;
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     display: none;
+    z-index: 1000;
 }
 .navigation-select-btn.open ~ .navigation-list-items {
     display: block;
