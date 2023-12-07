@@ -1,34 +1,32 @@
-/* 
-load more button 
-*/
+// /*
+// load more button
+// */
 let loadMoreBtn = document.querySelector("#load-more");
 let boxes = [...document.querySelectorAll(".container .box-container .box")];
 
-let currentItem = 3;
-let totalItems = boxes.length;
+// let currentItem = 3;
 
-loadMoreBtn.style.display = "none";
-if (currentItem >= boxes.length) {
-    loadMoreBtn.style.display = "none";
-} else {
-    loadMoreBtn.style.display = "";
-}
+// loadMoreBtn.style.display = "none";
+// if (currentItem < boxes.length) {
+//     loadMoreBtn.style.display = "";
+// }
 
-loadMoreBtn.onclick = () => {
-    for (var i = currentItem; i < currentItem + 3; i++) {
-        if (i < boxes.length) {
-            boxes[i].style.display = "inline-block";
-        }
-    }
-    currentItem += 3;
+// loadMoreBtn.onclick = () => {
+//     let totalItems = boxes.length;
+//     for (var i = currentItem; i < currentItem + 3; i++) {
+//         if (i < boxes.length) {
+//             boxes[i].style.display = "inline-block";
+//         }
+//     }
+//     currentItem += 3;
 
-    // Check the number of remaining items
-    totalItems = boxes.length - currentItem;
+//     // Check the number of remaining items
+//     totalItems = boxes.length - currentItem;
 
-    if (totalItems <= 0) {
-        loadMoreBtn.style.display = "none";
-    }
-};
+//     if (totalItems <= 0) {
+//         loadMoreBtn.style.display = "none";
+//     }
+// };
 
 /* 
 check box filter 
@@ -76,34 +74,42 @@ navigationItems.forEach((item) => {
             selectedCategories = selectedCategories.filter((selectedCategory) => selectedCategory !== category);
         }
 
-        // Reset the currentItem variable and hide all items that should be hidden initially
-        currentItem = 3;
-        boxes.forEach((box, index) => {
-            if (index >= currentItem) {
-                box.style.display = "none";
-            }
-        });
+        // // Reset the currentItem variable and hide all items that should be hidden initially
+        // currentItem = 3;
+        // boxes.forEach((box, index) => {
+        //     if (index >= currentItem) {
+        //         box.style.display = "none";
+        //     }
+        // });
 
-        // Filter the property cards to show only the items that match the selected categories
-        const propertyCards = document.querySelectorAll(".property-card");
+        // Get all the property cards
+        const propertyCards = [...document.querySelectorAll(".box")];
         let displayedCount = 0;
-        propertyCards.forEach((card) => {
-            if (selectedCategories.length === 0 || selectedCategories.includes(card.getAttribute("data-category"))) {
-                // If there are no selected categories or if the category of the property card is in the array, display the property card
-                card.style.display = "";
-                displayedCount++;
-            } else {
-                // Hide the property card
-                card.style.display = "none";
-            }
-        });
 
-        // If there are more than 3 displayed property cards, show the "Load More" button
-        if (displayedCount > 3) {
-            loadMoreBtn.style.display = "";
-        } else {
-            loadMoreBtn.style.display = "none";
+        // Function to filter and display the property cards
+        function filterAndDisplayPropertyCards(selectedCategories) {
+            // Reset the displayed count
+            displayedCount = 0;
+
+            // Filter and display the property cards
+            propertyCards.forEach((card) => {
+                if (selectedCategories.length === 0 || selectedCategories.includes(card.getAttribute("data-category"))) {
+                    card.style.display = "inline-block";
+                    displayedCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
         }
+
+        // Call the function with the selected categories
+        filterAndDisplayPropertyCards(selectedCategories);
+        // // If there are more than 3 displayed property cards, show the "Load More" button
+        // if (displayedCount > 3) {
+        //     loadMoreBtn.style.display = "";
+        // } else {
+        //     loadMoreBtn.style.display = "none";
+        // }
     });
 });
 
@@ -111,13 +117,13 @@ navigationItems.forEach((item) => {
 tabs box filter 
 */
 const tabsBox = document.querySelector(".tabs-box"),
-    allTabs = tabsBox.querySelectorAll(".tab"),
+    tabs = tabsBox.querySelectorAll(".tab"),
     arrowIcons = document.querySelectorAll(".icon i");
 
 function adjustDisplay() {
     // Calculate the cumulative width of the tab items
     let cumulativeTabWidth = 0;
-    allTabs.forEach((tab) => {
+    tabs.forEach((tab) => {
         cumulativeTabWidth += tab.offsetWidth;
     });
     let maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
@@ -160,12 +166,49 @@ arrowIcons.forEach((icon) => {
     });
 });
 
-allTabs.forEach((tab) => {
+// Function to sort the property cards
+function sortPropertyCards(criteria) {
+    let sortedPropertyCards;
+
+    if (criteria === "Most Popular") {
+        // Sort the property cards by total booking
+        sortedPropertyCards = boxes.sort((a, b) => Number(b.getAttribute("data-total-booking")) - Number(a.getAttribute("data-total-booking")));
+    } else if (criteria === "Highest Rating") {
+        // Sort the property cards by average rating
+        sortedPropertyCards = boxes.sort((a, b) => Number(b.getAttribute("data-avg-rating")) - Number(a.getAttribute("data-avg-rating")));
+    } else if (criteria === "Cheapest") {
+        // Sort the property cards by price
+        sortedPropertyCards = boxes.sort((a, b) => Number(a.getAttribute("data-current-price")) - Number(b.getAttribute("data-current-price")));
+    }
+
+    // Append the sorted property cards to the container
+    const container = document.querySelector(".box-container");
+    container.innerHTML = "";
+    sortedPropertyCards.forEach((propertyCard, index) => {
+        container.appendChild(propertyCard);
+    });
+}
+
+tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
-        tabsBox.querySelector(".active").classList.remove("active");
+        // Remove the 'active' class from all tabs
+        tabs.forEach((tab) => tab.classList.remove("active"));
+
+        // Add the 'active' class to the clicked tab
         tab.classList.add("active");
+
+        // Sort the property cards
+        sortPropertyCards(tab.textContent);
     });
 });
+
+// Find the active tab
+const activeTab = Array.from(tabs).find((tab) => tab.classList.contains("active"));
+
+// Sort the property cards based on the active tab when the page first loads
+if (activeTab) {
+    sortPropertyCards(activeTab.textContent);
+}
 
 const dragging = (e) => {
     if (!isDragging) return;
