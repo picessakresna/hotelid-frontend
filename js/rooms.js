@@ -5,8 +5,9 @@ let loadMoreBtn = document.querySelector("#load-more");
 let boxes = [...document.querySelectorAll(".container .box-container .box")];
 
 let currentItem = 3;
-loadMoreBtn.style.display = "none";
+let totalItems = boxes.length;
 
+loadMoreBtn.style.display = "none";
 if (currentItem >= boxes.length) {
     loadMoreBtn.style.display = "none";
 } else {
@@ -20,6 +21,13 @@ loadMoreBtn.onclick = () => {
         }
     }
     currentItem += 3;
+
+    // Check the number of remaining items
+    totalItems = boxes.length - currentItem;
+
+    if (totalItems <= 0) {
+        loadMoreBtn.style.display = "none";
+    }
 };
 
 /* 
@@ -43,6 +51,50 @@ items.forEach((item) => {
             btnText.innerText = `${checked.length} Selected`;
         } else {
             btnText.innerText = "Select Language";
+        }
+    });
+});
+
+// Select the navigation items
+const navigationItems = document.querySelectorAll(".navigation-item");
+
+// Store the selected categories
+let selectedCategories = [];
+
+// Add a 'click' event listener to each navigation item
+navigationItems.forEach((item) => {
+    item.addEventListener("click", function () {
+        // Get the text of the clicked navigation item
+        const category = this.querySelector(".navigation-item-text").textContent;
+
+        // Check if the navigation item is checked
+        if (this.classList.contains("checked")) {
+            // If the navigation item is checked, add its category to the array
+            selectedCategories.push(category);
+        } else {
+            // If the navigation item is not checked, remove its category from the array
+            selectedCategories = selectedCategories.filter((selectedCategory) => selectedCategory !== category);
+        }
+
+        // Filter the property cards to show only the items that match the selected categories
+        const propertyCards = document.querySelectorAll(".property-card");
+        let displayedCount = 0;
+        propertyCards.forEach((card) => {
+            if (selectedCategories.length === 0 || selectedCategories.includes(card.getAttribute("data-category"))) {
+                // If there are no selected categories or if the category of the property card is in the array, display the property card
+                card.style.display = "";
+                displayedCount++;
+            } else {
+                // Hide the property card
+                card.style.display = "none";
+            }
+        });
+
+        // If there are more than 3 displayed property cards, show the "Load More" button
+        if (displayedCount > 3) {
+            loadMoreBtn.style.display = "";
+        } else {
+            loadMoreBtn.style.display = "none";
         }
     });
 });
