@@ -781,7 +781,13 @@ input[type="radio"] {
 .rooms-preview {
     background-color: #2a265f;
     color: #fff;
+    min-width: 250px;
+    min-height: 150px;
+    width: 250px;
+    height: auto;
+    max-height: 150px;
     max-width: 250px;
+    object-fit: cover;
 }
 
 .rooms-preview a {
