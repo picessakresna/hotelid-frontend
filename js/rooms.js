@@ -76,6 +76,14 @@ navigationItems.forEach((item) => {
             selectedCategories = selectedCategories.filter((selectedCategory) => selectedCategory !== category);
         }
 
+        // Reset the currentItem variable and hide all items that should be hidden initially
+        currentItem = 3;
+        boxes.forEach((box, index) => {
+            if (index >= currentItem) {
+                box.style.display = "none";
+            }
+        });
+
         // Filter the property cards to show only the items that match the selected categories
         const propertyCards = document.querySelectorAll(".property-card");
         let displayedCount = 0;
