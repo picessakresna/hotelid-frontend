@@ -1,32 +1,5 @@
 // /*
-// load more button
-// */
-let loadMoreBtn = document.querySelector("#load-more");
 let boxes = [...document.querySelectorAll(".container .box-container .box")];
-
-// let currentItem = 3;
-
-// loadMoreBtn.style.display = "none";
-// if (currentItem < boxes.length) {
-//     loadMoreBtn.style.display = "";
-// }
-
-// loadMoreBtn.onclick = () => {
-//     let totalItems = boxes.length;
-//     for (var i = currentItem; i < currentItem + 3; i++) {
-//         if (i < boxes.length) {
-//             boxes[i].style.display = "inline-block";
-//         }
-//     }
-//     currentItem += 3;
-
-//     // Check the number of remaining items
-//     totalItems = boxes.length - currentItem;
-
-//     if (totalItems <= 0) {
-//         loadMoreBtn.style.display = "none";
-//     }
-// };
 
 /* 
 check box filter 
@@ -74,14 +47,6 @@ navigationItems.forEach((item) => {
             selectedCategories = selectedCategories.filter((selectedCategory) => selectedCategory !== category);
         }
 
-        // // Reset the currentItem variable and hide all items that should be hidden initially
-        // currentItem = 3;
-        // boxes.forEach((box, index) => {
-        //     if (index >= currentItem) {
-        //         box.style.display = "none";
-        //     }
-        // });
-
         // Get all the property cards
         const propertyCards = [...document.querySelectorAll(".box")];
         let displayedCount = 0;
@@ -104,12 +69,6 @@ navigationItems.forEach((item) => {
 
         // Call the function with the selected categories
         filterAndDisplayPropertyCards(selectedCategories);
-        // // If there are more than 3 displayed property cards, show the "Load More" button
-        // if (displayedCount > 3) {
-        //     loadMoreBtn.style.display = "";
-        // } else {
-        //     loadMoreBtn.style.display = "none";
-        // }
     });
 });
 

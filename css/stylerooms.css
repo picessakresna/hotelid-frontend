@@ -727,6 +727,10 @@ nav ul li a {
     margin-bottom: 5px;
 }
 
+.card-category {
+    margin-top: -8px;
+}
+
 .card-price strong {
     font-size: var(--fs-10);
     font-weight: var(--fw-600);
@@ -857,7 +861,7 @@ nav ul li a {
 
 .container .box-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 20px;
 }
 
@@ -929,7 +933,7 @@ nav ul li a {
     padding-right: 5px;
 }
 
-.button-more {
+/* .button-more {
     text-align: center;
     margin-bottom: 2em;
 }
@@ -949,7 +953,7 @@ nav ul li a {
 
 #load-more:hover {
     opacity: 0.8;
-}
+} */
 
 @media (max-width: 450px) {
     .container .heading {
