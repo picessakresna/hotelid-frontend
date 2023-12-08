@@ -140,3 +140,16 @@ let subMenu = document.getElementById("subMenu");
 function toggleMenu() {
     subMenu.classList.toggle("open-menu");
 }
+
+/**
+ * PROFILE NAVBAR
+ */
+
+getProfileInfo().then((profileInfo) => {
+    document.getElementById("userNameNav").innerHTML = profileInfo.name;
+
+    let userPhoto = document.getElementById("userPhotoNav");
+    let userPhotoNavbar = document.getElementById("userPhotoNavbar");
+    userPhoto.src = `data:image/png;base64,${profileInfo.photo}`;
+    userPhotoNavbar.src = `data:image/png;base64,${profileInfo.photo}`;
+});
