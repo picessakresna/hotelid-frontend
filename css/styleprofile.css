@@ -869,8 +869,6 @@ nav ul li a {
     color: #ffba0a;
 }
 
-
-
 .user-pic {
     width: 40px;
     border-radius: 50%;
@@ -1080,14 +1078,16 @@ nav ul li a {
     opacity: 0.8;
 }
 
-.header-profile{
+.header-profile {
     display: flex;
     justify-content: center;
+    margin-bottom: 15px;
 }
 
-.container-button{
+.container-button {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    margin-top: 28px;
 }
 .signup {
     padding-top: 6px;
@@ -1102,10 +1102,10 @@ nav ul li a {
     text-decoration: underline;
 }
 
-.info-profile{
+.info-profile {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .input-box-photo {
@@ -1116,7 +1116,6 @@ nav ul li a {
 .input-box-photo img {
     border: 1px solid #000;
     border-radius: 50%;
-    cursor: pointer;
     width: 16em; /* Set to desired width */
     height: 16em; /* Set to desired height */
     object-fit: cover;
@@ -1128,6 +1127,11 @@ nav ul li a {
     padding: 0.5%;
 }
 
+.description-profile {
+    margin-left: 25px;
+    align-items: start;
+}
+
 .profile-btn {
     cursor: pointer;
     color: var(--white);
@@ -1135,17 +1139,17 @@ nav ul li a {
     background-color: var(--violet-blue-crayola);
     width: 170px;
     min-height: 40px;
-    border-radius: 12px;
+    border-radius: 100px;
+    margin: 5px;
 }
 
-.profile-back {
-    cursor: pointer;
-    color: var(--white);
-    display: inline-block;
-    background-color: var(--dark-cornflower-blue_a7);
-    width: 170px;
-    min-height: 40px;
-    border-radius: 12px;
+.profile-btn.cancel {
+    background: var(--white);
+    color: var(--violet-blue-crayola);
+    border: 1px solid var(--violet-blue-crayola);
+}
+.profile-btn.cancel:hover {
+    background: var(--light);
 }
 
 .profile-btn:hover {
