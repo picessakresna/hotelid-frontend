@@ -157,10 +157,21 @@ tabs.forEach((tab) => {
     });
 });
 
+let startX;
+
+const startDragging = (e) => {
+    isDragging = true;
+    tabsBox.classList.add("dragging");
+    startX = e.type === "mousedown" ? e.clientX : e.touches[0].clientX;
+};
+
 const dragging = (e) => {
     if (!isDragging) return;
-    tabsBox.classList.add("dragging");
-    tabsBox.scrollLeft -= e.movementX;
+
+    const x = e.type === "mousemove" ? e.clientX : e.touches[0].clientX;
+    const walk = (x - startX) * 0.1; // speed of the drag, adjust as needed
+    tabsBox.scrollLeft -= walk;
+
     handleIcons(tabsBox.scrollLeft);
 };
 
@@ -169,6 +180,9 @@ const dragStop = () => {
     tabsBox.classList.remove("dragging");
 };
 
-tabsBox.addEventListener("mousedown", () => (isDragging = true));
+tabsBox.addEventListener("mousedown", startDragging);
+tabsBox.addEventListener("touchstart", startDragging);
 tabsBox.addEventListener("mousemove", dragging);
+tabsBox.addEventListener("touchmove", dragging);
 document.addEventListener("mouseup", dragStop);
+document.addEventListener("touchend", dragStop);

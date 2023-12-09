@@ -762,7 +762,7 @@ input[type="radio"] {
     box-shadow: var(--shadow-2);
     display: flex;
     max-width: 100%;
-    margin: 20px;
+    margin-top: 20px;
     overflow: hidden;
     width: 82em;
 }
@@ -1090,6 +1090,42 @@ input[type="radio"] {
   #MEDIA QUERIES
 \*-----------------------------------*/
 
+@media (max-width: 574px) {
+    /**
+   * REUSED STYLE
+   */
+
+    .container {
+        max-width: 94%;
+        width: 100%;
+        margin-inline: auto;
+    }
+
+    .courses-container {
+        max-width: 94%;
+        width: 100%;
+        margin-inline: auto;
+    }
+
+    .rooms-card {
+        width: 100%;
+        display: block;
+    }
+
+    .btn {
+        display: none;
+    }
+
+    .rooms-preview {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .container-tab nav label {
+        font-size: 14px;
+    }
+}
+
 /**
  * responsive for large than 575px screen
  */
@@ -1109,6 +1145,16 @@ input[type="radio"] {
         max-width: 540px;
         width: 100%;
         margin-inline: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    /**
+   * REUSED STYLE
+   */
+
+    .btn {
+        display: none;
     }
 }
 
