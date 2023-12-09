@@ -1,23 +1,3 @@
-const imgs = document.querySelectorAll(".img-select a");
-const imgBtns = [...imgs];
-let imgId = 1;
-
-imgBtns.forEach((imgItem) => {
-    imgItem.addEventListener("click", (event) => {
-        event.preventDefault();
-        imgId = imgItem.dataset.id;
-        slideImage();
-    });
-});
-
-function slideImage() {
-    const displayWidth = document.querySelector(".img-showcase img:first-child").clientWidth;
-
-    document.querySelector(".img-showcase").style.transform = `translateX(${-(imgId - 1) * displayWidth}px)`;
-}
-
-window.addEventListener("resize", slideImage);
-
 // setting stars rating
 function setRating(rating, totalBooking) {
     if (!rating || !totalBooking || rating < 1 || rating > 5 || totalBooking < 1) {
@@ -52,9 +32,6 @@ function setRating(rating, totalBooking) {
     ratingText.innerHTML = `${rating.toFixed(2)} (${totalBooking} rating)`;
 }
 
-// Call the function with the desired rating
-setRating(5, 1000);
-
 // setting stars rating reviews
 function setRatingReviews(rating) {
     if (!rating || rating < 1 || rating > 5) {
@@ -83,11 +60,3 @@ function setRatingReviews(rating) {
         stars[Math.floor(rating)].classList.add("fa-star-half-alt");
     }
 }
-
-// Call the function with the desired rating
-setRatingReviews(4);
-
-// booking button
-document.getElementById("booking").addEventListener("click", () => {
-    window.location.href = "formbookings.html?roomId=1";
-});
