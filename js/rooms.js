@@ -146,29 +146,43 @@ function sortPropertyCards(criteria) {
 
 tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
-        // Remove the 'active' class from all tabs
-        tabs.forEach((tab) => tab.classList.remove("active"));
+        // Check if isDragging is false
+        if (!isDragging) {
+            // Remove the 'active' class from all tabs
+            tabs.forEach((tab) => tab.classList.remove("active"));
 
-        // Add the 'active' class to the clicked tab
-        tab.classList.add("active");
+            // Add the 'active' class to the clicked tab
+            tab.classList.add("active");
 
-        // Sort the property cards
-        sortPropertyCards(tab.textContent);
+            // Sort the property cards
+            sortPropertyCards(tab.textContent);
+        }
     });
 });
 
 let startX;
+let startY;
 
 const startDragging = (e) => {
-    isDragging = true;
-    tabsBox.classList.add("dragging");
     startX = e.type === "mousedown" ? e.clientX : e.touches[0].clientX;
+    startY = e.type === "mousedown" ? e.clientY : e.touches[0].clientY;
 };
 
 const dragging = (e) => {
-    if (!isDragging) return;
+    // Check if the mouse button is not pressed or if it's not a touch event
+    if (e.type === "mousemove" && e.buttons !== 1) return;
 
     const x = e.type === "mousemove" ? e.clientX : e.touches[0].clientX;
+    const y = e.type === "mousemove" ? e.clientY : e.touches[0].clientY;
+
+    // Check if the mouse or touch has moved a certain distance
+    if (Math.abs(x - startX) > 10 || Math.abs(y - startY) > 10) {
+        isDragging = true;
+        tabsBox.classList.add("dragging");
+    }
+
+    if (!isDragging) return;
+
     const walk = (x - startX) * 0.1; // speed of the drag, adjust as needed
     tabsBox.scrollLeft -= walk;
 
@@ -186,3 +200,5 @@ tabsBox.addEventListener("mousemove", dragging);
 tabsBox.addEventListener("touchmove", dragging);
 document.addEventListener("mouseup", dragStop);
 document.addEventListener("touchend", dragStop);
+window.addEventListener("mouseup", dragStop);
+window.addEventListener("mouseleave", dragStop);
